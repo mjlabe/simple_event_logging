@@ -50,7 +50,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "simple_smart_logging.urls"
+ROOT_URLCONF = "simple_event_logging.urls"
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "simple_smart_logging.wsgi.application"
+WSGI_APPLICATION = "simple_event_logging.wsgi.application"
 
 
 # Database

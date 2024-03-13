@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "simple_smart_logging.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "simple_event_logging.settings")
 
 application = get_wsgi_application()
