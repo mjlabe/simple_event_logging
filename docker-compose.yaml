@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  acv-micro-toolbox-bff:
+    image: simple_event_logging:latest
+    command: uwsgi /uwsgi.yaml --show-config
+    ports:
+      - "287:8000"
+    volumes:
+      - ./src:/src

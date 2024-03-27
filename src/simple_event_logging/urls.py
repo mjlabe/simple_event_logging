@@ -6,32 +6,24 @@ from django.contrib import admin
 from django.urls import path
 from ninja import NinjaAPI
 from ninja.pagination import paginate, LimitOffsetPagination
-from ninja.responses import Response
 
 from device_logging.models import DeviceLogOut, DeviceLog, DeviceLogPost
 
 api = NinjaAPI()
 
-fmt = getattr(settings, 'LOG_FORMAT', None)
-lvl = getattr(settings, 'LOG_LEVEL', logging.DEBUG)
+fmt = getattr(settings, "LOG_FORMAT", None)
+lvl = getattr(settings, "LOG_LEVEL", logging.DEBUG)
 
 logging.basicConfig(format=fmt, level=lvl)
 logging.debug("Logging started on %s for %s" % (logging.root.name, logging.getLevelName(lvl)))
 
 
-@api.get("/add")
-def add(request, a: int, b: int):
-    return {"result": a + b}
-
-
 @api.get("/log", response=List[DeviceLogOut])
 @paginate(LimitOffsetPagination)
 def get_log(request, device: str = None):
-    if device:
-        log = DeviceLog.objects.filter(device=device).order_by("-id")
-    else:
-        log = DeviceLog.objects.all().order_by("-id")
-    return log
+    return (
+        DeviceLog.objects.filter(device=device).order_by("-id") if device else DeviceLog.objects.all().order_by("-id")
+    )
 
 
 @api.post("/log", response=DeviceLogOut)
