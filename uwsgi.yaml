@@ -1,0 +1,13 @@
+uwsgi:
+    http: 0.0.0.0:8000
+    chdir: /src
+    wsgi-file: /src/simple_event_logging/wsgi.py
+    master: true
+    threads: 1
+    processes: 5
+    enable-threads: 1
+    single-interpreter: 1
+    buffer-size: 65535
+    log-date: %%Y-%%m-%%dT%%H:%%M:%%SZ
+    logformat-strftime: 1
+    logformat: {"timestamp": "%(ftime)", "logLevel": "INFO", "message": "uwsgi response handled.", "durationMs": %(msecs), "statusCode": %(status), "details": {"responseSize": %(size)}}
