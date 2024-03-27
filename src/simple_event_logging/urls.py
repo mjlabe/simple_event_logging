@@ -1,4 +1,5 @@
 import logging
+import os
 from typing import List
 
 from django.conf import settings
@@ -9,7 +10,7 @@ from ninja.pagination import paginate, LimitOffsetPagination
 
 from device_logging.models import DeviceLogOut, DeviceLog, DeviceLogPost
 
-api = NinjaAPI()
+api = NinjaAPI(version=os.environ.get("VERSION", "0.0.1"))
 
 fmt = getattr(settings, "LOG_FORMAT", None)
 lvl = getattr(settings, "LOG_LEVEL", logging.DEBUG)
