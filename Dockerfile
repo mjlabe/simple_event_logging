@@ -11,4 +11,4 @@ COPY src /src
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Start uWSGI
-CMD ["uwsgi", "/uwsgi.yaml", "--show-config"]
+CMD ["uwsgi", "/uwsgi.yaml"]
