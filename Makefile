@@ -20,3 +20,10 @@ migrate:
 run-local:
 	python src/manage.py runserver 0.0.0.0:8000
 
+.PHONY: black-check
+black-check:
+	black --check --verbose --line-length 120 ./src
+
+.PHONY: black
+black:
+	black --line-length 120 ./src
