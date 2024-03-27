@@ -8,3 +8,4 @@ services:
       - "287:8000"
     volumes:
       - ./src:/src
+      - ./data:/src/data
